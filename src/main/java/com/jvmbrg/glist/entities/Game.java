@@ -25,7 +25,13 @@ public class Game {
 	private String platforms;
 	private Double score;
 	private String imgUrl;
+	
+    /*Comando para associar a coluna da tabela a um tipo text no banco de dados dessa forma, a capacidade de caracteres que banco 
+     * vai receber aumenta, evitando conflito de quantidade de caractere, que por padrão é definido em (255)*/						
+	@Column(columnDefinition = "TEXT") 
 	private String shortDescription;
+	
+	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
 	public Game() {}
