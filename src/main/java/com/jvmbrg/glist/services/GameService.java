@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.jvmbrg.glist.dto.GameDTO;
+import com.jvmbrg.glist.dto.GameMinDTO;
 import com.jvmbrg.glist.entities.Game;
 import com.jvmbrg.glist.repositories.GameRepository;
 
@@ -17,9 +18,9 @@ public class GameService {
 	private GameRepository gameRepository;
 	
 	@Transactional(readOnly = true)
-	public List<Game> findAll(){
+	public List<GameMinDTO> findAll(){
 		List<Game> result = gameRepository.findAll();
-		return result;
+		return result.stream().map(x -> new GameMinDTO(x)).toList();
 	}
 	
 	//Tratar exceção
