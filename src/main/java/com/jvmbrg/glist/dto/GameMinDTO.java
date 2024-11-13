@@ -2,6 +2,7 @@ package com.jvmbrg.glist.dto;
 
 
 import com.jvmbrg.glist.entities.Game;
+import com.jvmbrg.glist.projections.GameMinProjection;
 
 public class GameMinDTO {
 	
@@ -12,6 +13,15 @@ public class GameMinDTO {
 	private String shortDescription;
 	
 	public GameMinDTO() {}
+	
+	
+	public GameMinDTO(GameMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		year = projection.getYear();
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
+	}
 	
 	
 	//O this não é necessário, pois não tem mais ambiguidade nos parametros passados
